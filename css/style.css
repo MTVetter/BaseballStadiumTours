@@ -1,0 +1,136 @@
+html, body{
+    height: 100vh;
+    margin: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+#wrapper{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+}
+#map{
+    flex: 2 1 auto;
+}
+#panel{
+    flex: none;
+    background-color: gainsboro;
+}
+#info{
+    width: 90%;
+    text-align: center;
+}
+#stadium{
+    font-family: 'Rancho';
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+#left{
+    width: 85%;
+    font-weight: bold;
+    font-family: 'Rancho';
+    font-size: 20px;
+}
+#graph{
+    width: 300px;
+    height: 200px;
+    align-content: center;
+    padding-left: 50px;
+}
+#newPic{
+    width: 500px;
+    height: 200px;
+}
+.button{
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+.button:hover{
+    background-color: slategray;
+    color: white;
+}
+#team, #year, #attendance, #time, #hr, #ticket, p{
+    font-family: 'Gudea';
+    font-size: 15px;
+}
+p.description{
+    font-family: 'Gudea';
+    font-size: 18px;
+}
+p.begin{
+    font-family: 'Gudea';
+    font-size: 15px;
+}
+p.note{
+    font-family: 'Gudea';
+    font-size: 10px;
+}
+h1{
+    font-family: 'Rancho';
+    font-size: 40px;
+}
+h3{
+    font-family: 'Rancho';
+    font-size: 20px;
+}
+.tooltip{
+    position: absolute;
+    height: 35px;
+    min-width: 100px;
+    color: #fff;
+    background-color: #000;
+    border: solid thin #fff;
+    padding: 5px;
+    font-family: 'Gudea';
+}
+.title{
+    font-family: 'Rancho';
+}
+.stadiumPic{
+    padding-left: 25px;
+}
+#welcomePanel {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-65%);
+	width: 40%;
+}
+.info {
+	padding: 2vh 2vw;
+	font: 16px, sans-Serif;
+	background: rgba(255,255,255,0.9);
+	box-shadow: 0 0 15px rgba(37,37,37,0.4);
+	border-radius: 5px;
+	text-align: center;
+}
+.leaflet-popup-content p{
+    margin: 0.2px 0;
+}
+.help .leaflet-popup-content-wrapper{
+    background: gainsboro;
+    height: 350px;
+    width: 350px;
+}
+.leaflet-popup-tip-container{
+    display: none;
+}
+@media screen and (max-width: 768px){
+    #wrapper{
+        flex-direction: column;
+    }
+    #map{
+        flex: 2 1 auto;
+        order: 1;
+        margin: 0;
+        min-height: 50vh;
+    }
+    #panel{
+        order: 2;
+        max-width: 100%;
+        overflow: auto;
+    }
+}
