@@ -76,122 +76,17 @@ function search(data, map){
         onEachFeature: function (feature, layer){
             layer.on('click', function(e){
                 $("#panel").show("slide");
-                $("#stadium").text(feature.properties.StadiumName);
-                $("#team").text(feature.properties.Team);
-                $("#year").text(feature.properties.Built);
-                $("#attendence").text(feature.properties.AttenanceperGame);
-                $("#time").text(feature.properties.Time);
-                $("#hr").text(feature.properties.HRperGame);
-                $("#ticket").text(feature.properties.TicketPrice);
-                document.getElementById("newPic").innerHTML = '<img class="stadiumPic" src=" ' + feature.properties.Photo + '">';
-                var data = [
-                    {name:'Diamondbacks', value:feature.properties.Diamondbacks},
-                    {name:'Braves', value:feature.properties.Braves},
-                    {name:'Orioles', value:feature.properties.Orioles},
-                    {name:'Red Sox', value:feature.properties.RedSox},
-                    {name:'Cubs', value:feature.properties.Cubs},
-                    {name:'White Sox', value:feature.properties.WhiteSox},
-                    {name:'Reds', value:feature.properties.Reds},
-                    {name:'Indians', value:feature.properties.Indians},
-                    {name:'Rockies', value:feature.properties.Rockies},
-                    {name:'Tigers', value:feature.properties.Tigers},
-                    {name:'Astros', value:feature.properties.Astros},
-                    {name:'Royals', value:feature.properties.Royals},
-                    {name:'Angels', value:feature.properties.Angels},
-                    {name:'Dodgers', value:feature.properties.Dodgers},
-                    {name:'Marlins', value:feature.properties.Marlins},
-                    {name:'Brewers', value:feature.properties.Brewers},
-                    {name:'Twins', value:feature.properties.Twins},
-                    {name:'Mets', value:feature.properties.Mets},
-                    {name:'Yankees', value:feature.properties.Yankees},
-                    {name:"A's", value:feature.properties.As},
-                    {name:'Phillies', value:feature.properties.Phillies},
-                    {name:'Pirates', value:feature.properties.Pirates},
-                    {name:'Padres', value:feature.properties.Padres},
-                    {name:'Mariners', value:feature.properties.Mariners},
-                    {name:'Giants', value:feature.properties.Giants},
-                    {name:'Cardinals', value:feature.properties.Cardinals},
-                    {name:'Rays', value:feature.properties.Rays},
-                    {name:'Rangers', value:feature.properties.Rangers},
-                    {name:'Blue Jays', value:feature.properties.BlueJays},
-                    {name:'Nationals', value:feature.properties.Nationals}
-                ];
-                var container = d3.select("#graph")
-                    .append("svg")
-                    .attr("width", 300)
-                    .attr("height", 200)
-                    .attr("class", "container");
-                var innerRect = container.append("rect")
-                    .datum(200)
-                    .attr("width", function(d){
-                        return d;
-                    })
-                    .attr("height", function(d){
-                        return d - 59;
-                    })
-                    .attr("class", "innerRect")
-                    .attr("x", 50)
-                    .attr("y", 50)
-                    .style("fill", "#FFFFFF");
-                var minWin = d3.min(data, function(d){
-                    return d.value;
-                });
-                var maxWin = d3.max(data, function(d){
-                    return d.value;
-                });
-                var y = d3.scaleLinear()
-                    .range([190, 50])
-                    .domain([0,1]);
-                var x = d3.scaleLinear()
-                    .range([60, 120])
-                    .domain([0,10]);
-                var yAxis = d3.axisLeft(y)
-                    .scale(y);
-                var axis = container.append("g")
-                    .attr("class","axis")
-                    .attr("transform", "translate(50,0)")
-                    .call(yAxis);
-                var title = container.append("text")
-                    .attr("class", "title")
-                    .attr("text-anchor", "middle")
-                    .attr("x", 150)
-                    .attr("y", 30)
-                    .text("Winning Percentage at  " + feature.properties.StadiumName);
-                var div = d3.select("#graph")
-                    .append("div")
-                    .attr("class", "tooltip")
-                    .style("opacity", 0);
-                var circles = container.selectAll(".circles")
-                    .data(data)
-                    .enter()
-                    .append("circle")
-                    .attr("class", "circles")
-                    .attr("id", function(d){
-                        return d.name;
-                    })
-                    .attr("r", function(d){
-                        //var area = d.value * 200;
-                        return 3;
-                    })
-                    .attr("cx", function(d,i){
-                        return x(i);
-                    })
-                    .attr("cy", function(d){
-                        return y(d.value)
-                    })
-                    .on("mouseover", function(d){
-                        div.transition()
-                            .duration(100)
-                            .style("opacity", 0.9);
-                        div.html(d.name + "<br/>" + d.value)
-                            .style("left", (d3.event.clientX + 10) + "px")
-                            .style("top", (d3.event.clientY - 50) + "px");
-                    })
-                    .on("mouseout", function(d){
-                        div.transition()
-                            .duration(200)
-                            .style("opacity", 0);
-                    });
+                // $("#stadium").text(feature.properties.StadiumName);
+                // $("#team").text(feature.properties.Team);
+                // $("#year").text(feature.properties.Built);
+                // $("#attendence").text(feature.properties.AttenanceperGame);
+                // $("#time").text(feature.properties.Time);
+                // $("#hr").text(feature.properties.HRperGame);
+                // $("#ticket").text(feature.properties.TicketPrice);
+                // document.getElementById("newPic").innerHTML = '<img class="stadiumPic" src=" ' + feature.properties.Photo + '">';
+                $(".photo1").attr("src", feature.properties.Photo);
+                $(".photo2").attr("src", feature.properties.Photo2);
+                $(".photo3").attr("src", feature.properties.Photo3);
             });
         }
     }).addTo(map);
@@ -292,6 +187,35 @@ function getData(map){
         }
     });
 };
+
+//Function to create the slide show for the pictures
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n){
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n){
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n){
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    console.log(slides);
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i<slides.length; i++){
+        slides[i].style.display = "none";
+    }
+    for (i=0; i<dots.length; i++){
+        dots[i].className = dots[i].className.replace("active", "");
+    }
+    dots[slideIndex-1].className += " active";
+    slides[slideIndex-1].style.display = "block";
+}
 
 //Close the panel after user is done looking at the information
 $(".button").on("click", function(e){
