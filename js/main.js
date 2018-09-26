@@ -87,6 +87,9 @@ function search(data, map){
                 $(".photo1").attr("src", feature.properties.Photo);
                 $(".photo2").attr("src", feature.properties.Photo2);
                 $(".photo3").attr("src", feature.properties.Photo3);
+                $(".boxscore").attr("src", feature.properties.Boxscore);
+                $(".visitLineup").attr("src", feature.properties.VisitingLineup);
+                $(".homeTeamLineup").attr("src", feature.properties.HomeLineup);
             });
         }
     }).addTo(map);
