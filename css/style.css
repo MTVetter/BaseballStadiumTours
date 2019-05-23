@@ -121,6 +121,9 @@ h3{
 .mySlides {
     display: none;
 }
+.boxscore {
+    display: none;
+}
 /* .slideshow-container{
     max-width: 300px;
     position: relative;
@@ -152,7 +155,7 @@ h3{
 img{
     vertical-align: middle;
 }
-.dot {
+.dot, .dot2 {
     cursor: pointer;
     height: 15px;
     width: 15px;
