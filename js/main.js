@@ -155,7 +155,7 @@ function getIcon(team) {
   } else if (team == "Tigers") {
     return "img/tigers.jpg";
   } else if (team == "Astros") {
-    return "img/astros.jpg";
+    return "img/astrosVisited.png";
   } else if (team == "Royals") {
     return "img/royals.jpg";
   } else if (team == "Angels") {
